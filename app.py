@@ -4,16 +4,14 @@ import dash_table
 import dash_core_components as dcc
 import pandas as pd
 import numpy as np
+import os
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 bc_beers_exploration = pd.read_csv("bc_beers_final.csv", index_col=0)
 beers = bc_beers_exploration['Beer name_x'].unique()
 
 
-import flask
-
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
-#app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 app.layout = html.Div([
     dcc.Dropdown(
         id='beer_input',
