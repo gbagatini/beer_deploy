@@ -12,6 +12,7 @@ bc_beers_exploration = pd.read_csv("bc_beers_final.csv", index_col=0)
 beers = bc_beers_exploration['Beer name_x'].unique()
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 app.layout = html.Div([
     html.H2('BC Beer Recommender System'),
     dcc.Dropdown(
