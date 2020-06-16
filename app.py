@@ -11,7 +11,9 @@ beers = bc_beers_exploration['Beer name_x'].unique()
 
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
 server = app.server
+
 app.layout = html.Div([
     dcc.Dropdown(
         id='beer_input',
@@ -27,10 +29,10 @@ app.layout = html.Div([
     dash.dependencies.Output('dd-output-container', 'children'),
     [dash.dependencies.Input('beer_input', 'value')])
 def update_output(value):
-    print( " Check type of input")
-    print(type(value))
+    #print( " Check type of input")
+    #print(type(value))
     temp = find_similarity(value)
-    print(" in callback func ", temp)
+    #print(" in callback func ", temp)
     return  dash_table.DataTable(
         data=temp.to_dict('records'),
         columns=[{'id': c, 'name': c} for c in temp.columns],
@@ -51,7 +53,7 @@ def update_output(value):
 
 
 def find_similarity(beerInput):
-    print(" find similarity function Select beer is", beerInput)
+    #print(" find similarity function Select beer is", beerInput)
     cosine_list = []
     beer_name1 = []
     beer_name2 = []
