@@ -8,7 +8,12 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 bc_beers_exploration = pd.read_csv("bc_beers_final.csv", index_col=0)
 beers = bc_beers_exploration['Beer name_x'].unique()
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+import flask
+
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
+#app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     dcc.Dropdown(
         id='beer_input',
