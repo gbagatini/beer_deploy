@@ -15,6 +15,16 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.layout = html.Div([
     html.H2('BC Beer Recommender System'),
+    html.Div('''
+    Once I moved to BC, I was overwhelmed by the number of beer brands available.
+    I have always been a beer enthusiast and love to try new beers, but it was so hard to keep it up with the innovations and that is what motivated me to create a beer recommender system using deep learning.
+    '''),
+    html.Div('''
+    The primary goal of this project was to create an engine that would learn from data about the beers, existing users and recommend beers to those users based on their preferences. I used a neural network model for that.
+    
+    The second goal was to be able to learn about the beers and their features to recommend to new users (cold start).
+    '''),
+    html.H6("Here is the result of this project! Go ahead and select one of your favourite beers and check what the model recommends based on what it learned from data."),
     dcc.Dropdown(
         id='beer_input',
         options=[{'label': v, 'value': v} for v in beers],
